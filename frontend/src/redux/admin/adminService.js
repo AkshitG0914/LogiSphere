@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://logisphere-backend-k9dz.onrender.com/api/admin"; // Ensure correct base URL
+const API_URL = "process.env.REACT_APP_API_URL/api/admin"; // Ensure correct base URL
 
 export const getDashboardStats = async (token) => {
   if (!token) {

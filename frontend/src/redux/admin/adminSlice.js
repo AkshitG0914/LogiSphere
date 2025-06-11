@@ -28,7 +28,7 @@ export const fetchUsers = createAsyncThunk("admin/fetchUsers", async (_, thunkAP
     const token = thunkAPI.getState().auth.user?.token;
     const config = { headers: { Authorization: `Bearer ${token}` } };
     
-    const response = await axios.get("http://logisphere-backend-k9dz.onrender.com/api/admin/users", config);
+    const response = await axios.get("process.env.REACT_APP_API_URL/api/admin/users", config);
     console.log("✅ Fetched Users:", response.data); // 🔍 Debugging
 
     return response.data;
@@ -76,7 +76,7 @@ export const deleteUser = createAsyncThunk(
   async (userId, { rejectWithValue }) => {
     try {
       // Update to match your API endpoint
-      const response = await axios.delete(`http://logisphere-backend-k9dz.onrender.com/api/users/${userId}`);
+      const response = await axios.delete(`process.env.REACT_APP_API_URL/api/users/${userId}`);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || 'Failed to delete user');

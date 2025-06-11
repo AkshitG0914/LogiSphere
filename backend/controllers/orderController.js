@@ -27,7 +27,7 @@ const createOrder = asyncHandler(async (req, res) => {
 
   try {
     const trackingId = uuidv4();
-    const trackingUrl = `http://logisphere-backend-k9dz.onrender.com/api/orders/track/${trackingId}`; // Replace with real domain
+    const trackingUrl = `process.env.REACT_APP_API_URL/api/orders/track/${trackingId}`; // Replace with real domain
 
     // Generate QR Code for Tracking
     const qrCodeData = await QRCode.toDataURL(trackingUrl);

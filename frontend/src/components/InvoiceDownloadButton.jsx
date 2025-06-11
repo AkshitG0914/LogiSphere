@@ -3,7 +3,7 @@ import React from "react";
 const InvoiceDownloadButton = ({ invoiceId }) => {
   const handleDownload = async () => {
     try {
-      const response = await fetch(`http://logisphere-backend-k9dz.onrender.com/api/invoice/${invoiceId}/download`, {
+      const response = await fetch(`process.env.REACT_APP_API_URL/api/invoice/${invoiceId}/download`, {
         method: "GET",
         headers: {
           "Content-Type": "application/pdf",

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://logisphere-backend-k9dz.onrender.com/api/warehouses"; // ✅ Ensure correct base URL
+const API_URL = "process.env.REACT_APP_API_URL/api/warehouses"; // ✅ Ensure correct base URL
 
 // Fetch Warehouse Statistics
 const fetchWarehouseStats = async (token) => {

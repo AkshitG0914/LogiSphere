@@ -38,7 +38,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
 
   // API base URL - adjust this based on your environment setup
-  const API_BASE_URL = 'http://logisphere-backend-k9dz.onrender.com/api';
+  const API_BASE_URL = 'process.env.REACT_APP_API_URL/api';
 
   useEffect(() => {
     const handleClickOutside = (event) => {

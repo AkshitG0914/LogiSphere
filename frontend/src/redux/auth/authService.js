@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://logisphere-backend-k9dz.onrender.com/api/users"; // Update with your backend URL
+const API_URL = "process.env.REACT_APP_API_URL/api/users"; // Update with your backend URL
 
 // 📌 Register User
 const register = async (userData) => {
