@@ -15,7 +15,7 @@ export const addProduct = async (productData, token) => {
   
     console.log("📤 Sending to API:", productData);
   
-    const response = await fetch(`process.env.REACT_APP_API_URL/api/inventory`, {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/inventory`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -40,7 +40,7 @@ export const addProduct = async (productData, token) => {
 export const updateProduct = async (id, updatedData, token) => {
     if (!id) throw new Error("Missing product ID");
   
-    const response = await fetch(`process.env.REACT_APP_API_URL/api/inventory/${id}`, {  // ✅ Ensure Correct Backend URL
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/inventory/${id}`, {  // ✅ Ensure Correct Backend URL
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

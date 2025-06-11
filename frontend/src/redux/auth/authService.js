@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "process.env.REACT_APP_API_URL/api/users"; // Update with your backend URL
+const API_URL = `${process.env.REACT_APP_API_URL}/api/users`; // Update with your backend URL
 
 // 📌 Register User
 const register = async (userData) => {
@@ -25,4 +25,10 @@ const logout = () => {
   localStorage.removeItem("user");
 };
 
-export default { register, login, logout };
+const authService = {
+  register,
+  login,
+  logout,
+};
+
+export default authService;

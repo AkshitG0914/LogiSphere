@@ -4,7 +4,7 @@ const API_URL = `${process.env.REACT_APP_API_URL}/api/orders`;
 
 // 📌 Fetch assigned deliveries for the driver
 export const getDriverOrders = async (token) => {
-  const response = await fetch("process.env.REACT_APP_API_URL/api/driver/deliveries", {
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/api/driver/deliveries`, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -20,7 +20,7 @@ export const getDriverOrders = async (token) => {
 };
 
 export const updateDeliveryStatus = async (token, deliveryId, status, location, otp) => {
-  const response = await fetch(`process.env.REACT_APP_API_URL/api/driver/deliveries/${deliveryId}`, {
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/api/driver/deliveries/${deliveryId}`, {
     method: "PUT",
     headers: {
       Authorization: `Bearer ${token}`,

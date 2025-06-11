@@ -32,7 +32,7 @@ export const fetchWarehouses = createAsyncThunk("warehouse/fetchWarehouses", asy
 // ✅ Add the missing fetchProducts function
 export const fetchProducts = createAsyncThunk("warehouse/fetchProducts", async (_, thunkAPI) => {
   try {
-    const response = await axios.get("process.env.REACT_APP_API_URL/api/products");
+    const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/products`);
     
     if (!Array.isArray(response.data)) {
       throw new Error("Invalid response: Expected an array of products.");
