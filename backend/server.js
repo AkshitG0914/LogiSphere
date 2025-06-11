@@ -21,17 +21,13 @@ const app = express();
 const server = http.createServer(app); 
 const io = new Server(server, {
   cors: {
-    origin: "https://logi-sphere.vercel.app",
+    origin: ["https://logi-sphere.vercel.app", "https://logi-sphere-git-main-akshits-projects-92c26ca2.vercel.app"],
     methods: ["GET", "POST", "PUT"],
   },
 });
 
-// app.use(cors({
-//   origin: "https://logi-sphere.vercel.app", 
-//   credentials: true 
-// }));
 app.use(cors({
-  origin: "https://logi-sphere.vercel.app", 
+  origin: ["https://logi-sphere.vercel.app", "https://logi-sphere-git-main-akshits-projects-92c26ca2.vercel.app"],
   credentials: true 
 }));
 
