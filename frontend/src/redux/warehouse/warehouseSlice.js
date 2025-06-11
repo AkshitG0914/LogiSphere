@@ -17,7 +17,7 @@ export const fetchWarehouseStats = createAsyncThunk(
 // ✅ Fetch List of Warehouses
 export const fetchWarehouses = createAsyncThunk("warehouse/fetchWarehouses", async (_, thunkAPI) => {
   try {
-    const response = await axios.get("process.env.REACT_APP_API_URL/api/warehouses");
+    const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/warehouses`);
     
     if (!Array.isArray(response.data)) {
       throw new Error("Invalid response: Expected an array.");

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "process.env.REACT_APP_API_URL/api/inventory"; // Adjust the endpoint as per your backend
+const API_URL = `${process.env.REACT_APP_API_URL}/api/inventory`; // Adjust the endpoint as per your backend
 
 // Fetch all inventory items
 export const getInventory = async (token) => {

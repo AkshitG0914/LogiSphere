@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "process.env.REACT_APP_API_URL/api/orders";
+const API_URL = `${process.env.REACT_APP_API_URL}/api/orders`;
 
 // 📌 Fetch assigned deliveries for the driver
 export const getDriverOrders = async (token) => {

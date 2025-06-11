@@ -38,7 +38,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
 
   // API base URL - adjust this based on your environment setup
-  const API_BASE_URL = 'process.env.REACT_APP_API_URL/api';
+  const API_BASE_URL = `${process.env.REACT_APP_API_URL}/api`;
 
   useEffect(() => {
     const handleClickOutside = (event) => {
