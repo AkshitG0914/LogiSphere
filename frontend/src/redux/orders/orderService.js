@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/orders"; // Adjust if needed
+const API_URL = "http://logisphere-backend-k9dz.onrender.com/api/orders"; // Adjust if needed
 
 // ✅ Get all orders
 const getOrders = async (token) => {
