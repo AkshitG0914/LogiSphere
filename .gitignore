@@ -1,0 +1,52 @@
+# ====================
+# Global
+# ====================
+# Node modules
+node_modules/
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+# Environment files
+.env
+*.env.local
+# macOS
+.DS_Store
+# VSCode
+.vscode/
+# IntelliJ
+.idea/
+
+# ====================
+# Frontend (React/Vite)
+# ====================
+frontend/node_modules/
+frontend/dist/
+frontend/.cache/
+# If you have local env overrides
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+# ====================
+# Backend (Node/Express)
+# ====================
+backend/node_modules/
+# If you build/transpile your server (e.g. with Babel/TypeScript)
+backend/build/
+backend/dist/
+# Uploaded files or persistent storage
+backend/uploads/
+# If you use SQLite locally
+backend/*.sqlite
+backend/*.sqlite3
+
+# ====================
+# Optional: OS / Editor
+# ====================
+# Windows thumbnail cache files
+Thumbs.db
+# Linux trash folder
+.Trash-*
