@@ -118,7 +118,9 @@ const adminSlice = createSlice({
       })
       .addCase(fetchRevenueAnalytics.fulfilled, (state, action) => {
         state.loading = false;
-        state.revenueData = action.payload;
+        // Ensure revenueData is always an array
+        state.revenueData = Array.isArray(action.payload) ? action.payload : [];
+        state.error = null;
       })
       .addCase(fetchRevenueAnalytics.rejected, (state, action) => {
         state.loading = false;

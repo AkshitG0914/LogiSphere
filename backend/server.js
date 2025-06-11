@@ -26,9 +26,12 @@ const io = new Server(server, {
   },
 });
 
+// Update CORS configuration
 app.use(cors({
-  origin: ["https://logi-sphere.vercel.app", "https://logi-sphere-git-main-akshits-projects-92c26ca2.vercel.app"],
-  credentials: true 
+  origin: ["http://localhost:5173", "https://logi-sphere.vercel.app", "https://logi-sphere-git-main-akshits-projects-92c26ca2.vercel.app"],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 app.use(express.json());

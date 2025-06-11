@@ -61,7 +61,13 @@ const warehouseSlice = createSlice({
       })
       .addCase(fetchWarehouseStats.fulfilled, (state, action) => {
         state.loading = false;
-        state.stats = action.payload;
+        // Ensure we have valid data
+        if (action.payload && typeof action.payload === 'object') {
+          state.stats = action.payload;
+        } else {
+          state.stats = {};
+        }
+        state.error = null;
       })
       .addCase(fetchWarehouseStats.rejected, (state, action) => {
         state.loading = false;
@@ -73,7 +79,9 @@ const warehouseSlice = createSlice({
       })
       .addCase(fetchWarehouses.fulfilled, (state, action) => {
         state.loading = false;
-        state.warehouses = action.payload;
+        // Ensure warehouses is always an array
+        state.warehouses = Array.isArray(action.payload) ? action.payload : [];
+        state.error = null;
       })
       .addCase(fetchWarehouses.rejected, (state, action) => {
         state.loading = false;

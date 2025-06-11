@@ -78,25 +78,43 @@ const updateStockQuantity = asyncHandler(async (req, res) => {
 const getWarehouseStats = asyncHandler(async (req, res) => {
   try {
     const totalProducts = await Product.countDocuments();  
+    
+    // Ensure proper response format
+    const stats = {
+      totalProducts: totalProducts || 0,
+      lowStock: 0,
+      pendingShipments: 0
+    };
 
-    // ✅ Check if `stock` exists in `Product` or `Warehouse`
-    const lowStock = await Warehouse.aggregate([
+    // Get low stock count
+    const lowStockResult = await Warehouse.aggregate([
       { $unwind: "$stock" },
       { $match: { "stock.quantity": { $lt: 10 } } },
       { $count: "lowStockCount" }
     ]);
+    
+    if (lowStockResult.length > 0) {
+      stats.lowStock = lowStockResult[0].lowStockCount;
+    }
 
-    // ✅ Fix pending shipments query
-    const pendingShipments = await Order.countDocuments({ status: { $regex: /pending/i } });
-
-    res.status(200).json({
-      totalProducts,
-      lowStock: lowStock.length > 0 ? lowStock[0].lowStockCount : 0,
-      pendingShipments
+    // Get pending shipments
+    const pendingShipments = await Order.countDocuments({ 
+      status: { $regex: /pending/i } 
     });
+    stats.pendingShipments = pendingShipments || 0;
+
+    // Set content type explicitly
+    res.setHeader('Content-Type', 'application/json');
+    res.status(200).json(stats);
+
   } catch (error) {
     console.error("🚨 Warehouse Stats Error:", error.message);
-    res.status(500).json({ message: "Failed to fetch warehouse stats" });
+    // Ensure error response is JSON
+    res.setHeader('Content-Type', 'application/json');
+    res.status(500).json({ 
+      message: "Failed to fetch warehouse stats",
+      error: error.message 
+    });
   }
 });
 

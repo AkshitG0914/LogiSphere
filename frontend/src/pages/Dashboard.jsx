@@ -25,13 +25,24 @@ const AdminDashboard = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(fetchAdminData());
-    dispatch(fetchRevenueAnalytics());
-    setTimeout(() => setAnimateStats(true), 100);
+    const fetchData = async () => {
+      try {
+        await dispatch(fetchAdminData());
+        await dispatch(fetchRevenueAnalytics());
+        setTimeout(() => setAnimateStats(true), 100);
+      } catch (error) {
+        console.error("Dashboard data fetch error:", error);
+      }
+    };
+    
+    fetchData();
   }, [dispatch]);
   
   // Calculate total users - handle both array of users and direct number
   const totalUsers = Array.isArray(users) ? users.length : (typeof users === 'number' ? users : 0);
+
+  // Add data validation for revenue data
+  const isValidRevenueData = Array.isArray(revenueData) && revenueData.length > 0;
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-50 dark:bg-slate-900 font-sans">
